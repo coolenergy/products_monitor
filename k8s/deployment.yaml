@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: products_monitor
+spec:
+  selector:
+    matchLabels:
+      app: products_monitor
+    template:
+      metadata:
+        labels:
+          app: products_monitor
+        spec:
+          containers:
+            - name: products_monitor
+              image: cerebrovinny/products_monitor:latest
+              ports:
+                - containerPort: 8081
+                  name: http
+                  protocol: TCP
